@@ -1,0 +1,39 @@
+{
+  "precios": "registro/precios.csv",
+  "estado": "registro/avisos_estado.json",
+  "ventanas_dias": [
+    90,
+    365
+  ],
+  "umbral_caida_pct": "30",
+  "reaviso_cada_puntos": "10",
+  "dias_sin_datos_max": 3,
+  "dia_recordatorio": 5,
+  "dia_aviso_falta_registro": 12,
+  "aportacion_mensual": "100",
+  "revision": {
+    "capital_70_30": "10000",
+    "aportacion_mensual_nivel_b": "1000",
+    "capital_nivel_b": "20000"
+  },
+  "contraste_broker_pct": "1",
+  "variables_entorno": {
+    "token": "KAIRO_TELEGRAM_BOT_TOKEN",
+    "chat": "KAIRO_TELEGRAM_OPERATOR_ID"
+  },
+  "mensajes": {
+    "aviso_fijo": "Aviso automático de una herramienta personal con reglas fijas. No es asesoramiento financiero ni fiscal. Las decisiones y su ejecución son tuyas.",
+    "recordatorio": "Hoy toca la aportación mensual a {instrumento}. Meses seguidos aportando: {racha}.",
+    "falta_registro": "Aún no consta la aportación de este mes en el registro. Anótala cuando el bróker la ejecute.",
+    "caida": "El fondo está un {caida} % por debajo de su máximo de {ventana} días. Solo seguir aportando según el plan.",
+    "nuevo_maximo": "Nuevo máximo de {ventana} días. Informativo; no es motivo para vender ni para aportar más.",
+    "sin_datos": "Faltan precios desde hace {dias} días: no se pueden evaluar caídas hasta recibir datos nuevos.",
+    "revision_70_30": "Tu capital alcanzó el umbral de revisión: revisa si pasar a 70/30 con bonos (necesita un segundo instrumento aprobado).",
+    "revision_nivel_b": "Aportación o capital por encima del umbral del nivel B: revisa el bróker y si compensa que Kairo envíe las órdenes.",
+    "fuente_dudosa": "El valor calculado difiere más de {pct} % del valor del bróker: la fuente de precio es dudosa.",
+    "proceso_parado": "El proceso de avisos no se ejecutó durante {dias} días: puede haber avisos perdidos."
+  },
+  "cobertura_minima_pct": "80",
+  "nuevo_maximo_cada_dias": 7,
+  "dias_atraso_max": 7
+}

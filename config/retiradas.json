@@ -1,0 +1,10 @@
+{
+  "activada": false,
+  "capital_objetivo": null,
+  "fecha_inicio": null,
+  "porcentaje_anual": "4",
+  "factor_en_caida": "0.5",
+  "umbral_caida_pct": "30",
+  "ventana_caida_dias": 365,
+  "meses": 12
+}

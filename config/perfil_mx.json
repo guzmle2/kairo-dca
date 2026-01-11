@@ -1,0 +1,17 @@
+{
+  "estado": "borrador",
+  "pais": "MX",
+  "divisa": "MXN",
+  "isin_permitidos": [
+    "IE00BK5BQT80"
+  ],
+  "umbrales_r12a": {
+    "coste_total_anual_max_pct": "0.50",
+    "comision_max_por_aportacion_pct": "0.25"
+  },
+  "broker": {
+    "candidato": "GBM+ (Trading MX / SIC)",
+    "alternativa": "Interactive Brokers"
+  },
+  "referencia": "document/perfiles/mx.md"
+}

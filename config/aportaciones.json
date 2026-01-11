@@ -1,0 +1,8 @@
+{
+  "perfil": "es",
+  "registro": "registro/aportaciones.csv",
+  "tolerancias": {
+    "importe_eur": "0.01",
+    "unidades": "0.0001"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "estado": "borrador",
+  "pais": "US",
+  "divisa": "USD",
+  "isin_permitidos": [
+    "VT",
+    "VTI"
+  ],
+  "umbrales_r12a": {
+    "coste_total_anual_max_pct": "0.50",
+    "comision_max_por_aportacion_pct": "0.25"
+  },
+  "broker": {
+    "candidato": "Fidelity",
+    "alternativa": "Schwab"
+  },
+  "referencia": "document/perfiles/us.md"
+}

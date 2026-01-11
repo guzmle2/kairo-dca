@@ -1,0 +1,60 @@
+{
+  "destino": "datos",
+  "fuentes": {
+    "french_desarrollados": {
+      "url": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/Developed_3_Factors_CSV.zip",
+      "fichero": "french_developed_3_factors.csv",
+      "contenido": "retorno total mensual del mercado de países desarrollados más letra a 1 mes",
+      "divisa": "USD",
+      "cobertura": "1990-07 a 2026-08",
+      "limitacion": "sin emergentes; retención sobre dividendos no verificada; ya descargado y congelado en f2_15.json"
+    },
+    "msci_world_neto_eur": {
+      "url": "https://app2.msci.com/products/service/index/indexmaster/getLevelDataForGraph?currency_symbol=EUR&index_variant=NETR&start_date=19970101&end_date=20261009&data_frequency=END_OF_MONTH&baseValue=false&index_codes=990100",
+      "fichero": "msci_world_neto_eur.json",
+      "contenido": "MSCI World, retorno total neto de retención, niveles de fin de mes",
+      "divisa": "EUR",
+      "cobertura": "devuelve desde 2000-12 aunque se pide desde 1997",
+      "limitacion": "endpoint público no documentado de MSCI: puede cambiar; solo desarrollados"
+    },
+    "oro_mensual": {
+      "url": "https://raw.githubusercontent.com/datasets/gold-prices/main/data/monthly.csv",
+      "fichero": "oro_mensual_usd.csv",
+      "contenido": "precio mensual del oro",
+      "divisa": "USD",
+      "cobertura": "1833-01 a 2026-09",
+      "limitacion": "repositorio comunitario de datos abiertos; precio al contado sin rendimiento; hay que convertir a EUR con el tipo de cambio"
+    },
+    "eurusd_bce": {
+      "url": "https://data-api.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A?format=csvdata&startPeriod=1999-01",
+      "fichero": "eurusd_bce_mensual.csv",
+      "contenido": "tipo de cambio de referencia del BCE, dólares por euro, media mensual",
+      "divisa": "USD por EUR",
+      "cobertura": "1999-01 en adelante",
+      "limitacion": "antes de 1999 haría falta el marco alemán (no incluido)"
+    },
+    "bund_10_anios_bundesbank": {
+      "url": "https://api.statistiken.bundesbank.de/rest/data/BBSIS/D.I.ZST.ZI.EUR.S1311.B.A604.R10XX.R.A.A._Z._Z.A?format=csv&startPeriod=1990-01-01",
+      "fichero": "bund_10_anios_bundesbank.csv",
+      "contenido": "rendimiento diario de la curva de bonos del Estado alemán a 10 años (método Svensson)",
+      "divisa": "EUR",
+      "cobertura": "consultar la primera fila de datos del fichero hasta hoy",
+      "limitacion": "es un rendimiento, no un retorno total: el retorno se construye comprando cada mes un bono a la par con ese rendimiento; solo deuda alemana; rendimiento al contado de Svensson usado como rendimiento a la par"
+    }
+  },
+  "no_accesibles": {
+    "fred": "las peticiones a fred.stlouisfed.org dejaron de responder durante la sesión del 10-oct-2026; las descargas de FRED se reintentan más tarde",
+    "lbma_oro": "prices.lbma.org.uk devuelve 403 a descargas automáticas",
+    "stooq": "stooq.com exige verificación con JavaScript",
+    "trading_212_api": "no es una fuente de datos sino un bróker con API en beta (ver documento 0.2)"
+  },
+  "descarga": {
+    "tiempo_espera_s": 60,
+    "agente": "kairo-datos/1.0",
+    "max_bytes": 20000000
+  },
+  "descriptivo": {
+    "peso_bolsa": 0.7,
+    "vencimiento_bono_anios": 10
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "estado": "congelado el 10-oct-2026 tras verificar las series y antes de ejecutar la prueba",
+  "periodos": {
+    "diseno": [
+      "1990-07",
+      "2017-12"
+    ],
+    "mitades": [
+      [
+        "1990-07",
+        "2003-12"
+      ],
+      [
+        "2004-01",
+        "2017-12"
+      ]
+    ],
+    "holdout": [
+      "2018-01",
+      "2026-08"
+    ]
+  },
+  "regla": {
+    "sma_meses": 10,
+    "vol_objetivo_anual": 0.1,
+    "vol_ventana_meses": 12,
+    "peso_min": 0,
+    "peso_max": 1,
+    "refugio": "liquidez a tipo T-bill",
+    "retraso_ejecucion_meses": 1
+  },
+  "series": {
+    "fichero": "datos/french_developed_3_factors.csv",
+    "sha256": "1d2658c5d3945a270c7dbf3465687ad8432cd611844e74d0869cba2cfb010419",
+    "fuente": "Kenneth R. French Data Library, Developed Markets 3 Factors (monthly, Bloomberg, creado 202608)",
+    "renta_variable_global": "Mkt-RF más RF: retorno total mensual en USD del mercado de países desarrollados desde 1990-07; sin mercados emergentes; retención sobre dividendos no verificada",
+    "liquidez": "RF del mismo fichero: letra del Tesoro de EE. UU. a 1 mes",
+    "divisa": "USD; no hay serie en EUR desde 1990 sin mezclar fuentes; el tipo de cambio queda fuera y se declara como limitación",
+    "bonos": "sin serie de retorno total verificada: la variante con bonos como refugio no se ejecuta; cuenta en N igualmente",
+    "oro": "sin serie verificada: no se ejecuta el análisis por activo del oro; cuenta en N igualmente",
+    "limitacion_activos": "el análisis por activo y la cartera de tres activos de 0.3 no se pueden probar con datos gratuitos verificados; la prueba vinculante es sobre renta variable global frente a liquidez"
+  },
+  "linea_base": "100 % renta variable global con aportación mensual; comparador a igual volatilidad: línea base mezclada con liquidez hasta igualar la volatilidad realizada del filtro",
+  "costes": {
+    "comision_pct": 0.0015,
+    "comision_minima_eur": "no aplicable en la serie mensual: se evalúa en F2-16; la prueba usa 0,15 % por operación",
+    "ter": "0,20 % anual aplicado por igual al filtro y a la línea base",
+    "impuestos": "19 % hasta 6.000, 21 % hasta 50.000, 23 % hasta 200.000, 27 % hasta 300.000 y 28 % más; FIFO; se estima sobre un capital de 10.000 EUR; regla de los dos meses: la salida y reentrada del filtro no recompra el mismo valor en menos de dos meses, por lo que no se aplica; versión neta vinculante y bruta informativa",
+    "importes_prueba_eur": [
+      300,
+      1000,
+      10000
+    ],
+    "aportacion_mensual": "importe fijo normalizado a 1; los resultados se expresan como rendimiento ponderado en el tiempo",
+    "ter_anual": 0.002,
+    "tramos": [
+      {
+        "hasta": 6000,
+        "tipo": 0.19
+      },
+      {
+        "hasta": 50000,
+        "tipo": 0.21
+      },
+      {
+        "hasta": 200000,
+        "tipo": 0.23
+      },
+      {
+        "hasta": 300000,
+        "tipo": 0.27
+      },
+      {
+        "hasta": null,
+        "tipo": 0.28
+      }
+    ],
+    "nota_formalizacion": "campos numéricos que formalizan el TER del 0,20 %, el capital de 10.000 y los tramos ya declarados en texto; añadidos antes de ejecutar"
+  },
+  "criterios_vinculantes": {
+    "caida_menor_que_comparador_igual_vol": 0.25,
+    "caida_menor_que_linea_base_pura": true,
+    "calmar_no_inferior": true,
+    "cagr_neto_dif_max_puntos": 0.01,
+    "sin_mejor_anio": "caída y CAGR siguen cumpliendo",
+    "sin_peor_crisis_para_el_filtro": "24 meses de mayor pérdida frente al comparador; la caída sigue cumpliendo",
+    "cambios_al_anio_max_suma_3_activos": 6,
+    "holdout": "caída y CAGR también se cumplen, una sola pasada",
+    "sin_peor_crisis_meses": 24
+  },
+  "bootstrap": {
+    "bloque_meses": 12,
+    "remuestreos": 10000,
+    "semilla": 2026,
+    "ic_nivel": 0.9,
+    "ic_inferior_reduccion_caida_min": 0,
+    "p_calmar_filtro_mayor_base_min": 0.8,
+    "dsr_min": 0.9
+  },
+  "informativos": [
+    "Sharpe a igual volatilidad",
+    "mitades 1990-2003 y 2004-2017",
+    "efecto por activo",
+    "variante bruta de impuestos",
+    "variante con bonos como refugio"
+  ],
+  "n": {
+    "total": 10,
+    "lista": [
+      "prueba principal",
+      "SMA 8 meses",
+      "SMA 12 meses",
+      "vol objetivo 8 %",
+      "vol objetivo 12 %",
+      "sin vol objetivo",
+      "bonos como refugio",
+      "mitades",
+      "hold-out",
+      "activos por separado"
+    ]
+  },
+  "parada": "si falla un criterio vinculante el filtro se descarta y el producto es la línea base; la prueba solo puede no refutar el filtro, y si pasa entra en piloto, no en dinero",
+  "presupuesto_sesiones": 2,
+  "regla_de_datos": "si en la primera sesión no se verifican las series, se declara la línea base como producto y no se gastan más sesiones",
+  "cambios_al_anio": "un cambio es una salida o una entrada del activo; con un solo activo el máximo es 6 de media",
+  "capital": 10000,
+  "variantes": {
+    "principal": {
+      "sma_meses": 10,
+      "vol_objetivo": 0.1,
+      "vol_ventana": 12
+    },
+    "sma8": {
+      "sma_meses": 8,
+      "vol_objetivo": 0.1,
+      "vol_ventana": 12
+    },
+    "sma12": {
+      "sma_meses": 12,
+      "vol_objetivo": 0.1,
+      "vol_ventana": 12
+    },
+    "vol8": {
+      "sma_meses": 10,
+      "vol_objetivo": 0.08,
+      "vol_ventana": 12
+    },
+    "vol12": {
+      "sma_meses": 10,
+      "vol_objetivo": 0.12,
+      "vol_ventana": 12
+    },
+    "sin_vol": {
+      "sma_meses": 10,
+      "vol_objetivo": null,
+      "vol_ventana": 12
+    }
+  },
+  "calentamiento": "los primeros 12 meses de la serie (1990-07 a 1991-06) solo alimentan la media y la volatilidad; la evaluación empieza en 1991-07",
+  "informe": "user_data/backtest_results/f2_15.json",
+  "calentamiento_min_meses": 12,
+  "criterios_en_subperiodos": [
+    "caida_vs_comparador",
+    "cagr"
+  ],
+  "criterios_nota_formalizacion": "campos numéricos y de lista que formalizan lo ya escrito en texto (24 meses, 12 de calentamiento, caída y CAGR en los subperiodos y el hold-out); añadidos en la refactorización posterior a la ejecución, que se repitió y dio los mismos resultados"
+}
