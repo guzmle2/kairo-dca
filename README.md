@@ -1,5 +1,7 @@
 # kairo-dca
 
+[Leer en español](README.es.md)
+
 Boring, honest ETF dollar-cost averaging. A small Python toolkit for people who invest a fixed amount every month into one global accumulating ETF and want discipline, not predictions.
 
 > **Not financial advice.** Educational and personal-use software. Nothing here sends orders, holds credentials or moves money.
